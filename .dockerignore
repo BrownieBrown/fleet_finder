@@ -1,0 +1,29 @@
+# Ignore the Dockerfile itself, as it is already used by Docker
+Dockerfile
+
+# Ignore the .dockerignore file
+.dockerignore
+
+# Git files
+.git
+.gitignore
+
+# Go build output
+bin/
+cmd/
+
+# IDE directories
+.vscode/
+.idea/
+*.sublime*
+
+# Local OS files
+*.DS_Store
+*.env
+
+# Dependency directories (if not needed in the image)
+vendor/
+
+# Logs and temporary files
+*.log
+*.tmp
