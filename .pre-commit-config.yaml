@@ -28,3 +28,10 @@ repos:
     hooks:
       - id: go-fmt
       - id: go-imports
+  - repo: local
+    hooks:
+      - id: check-coverage
+        name: Check Go Test Coverage
+        entry: bash -c "go test -coverprofile=coverage.out ./... && go tool cover -func=coverage.out | grep total | awk '{print $3}'"
+        language: system
+        types: [python, go]
