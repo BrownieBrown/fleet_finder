@@ -2,11 +2,16 @@ FROM golang:1.23
 
 WORKDIR /usr/src/app
 
-# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
+# Pre-copy/cache go.mod for pre-downloading dependencies
 COPY go.mod ./
-RUN go mod download && go mod verify
 
+RUN go mod download
+
+# Copy the entire project
 COPY . .
-RUN go build -v -o /usr/local/bin/app ./...
 
+# Build the Go application
+RUN go build -v -o /usr/local/bin/app ./cmd/main.go
+
+# Command to run the executable
 CMD ["app"]
